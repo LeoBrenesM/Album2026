@@ -51,6 +51,11 @@ threshold = st.sidebar.number_input(
     value=2
 )
 
+show_qty = st.sidebar.checkbox(
+    "Mostrar cantidades",
+    value=False
+)
+
 results = []
 
 # ===== PROCESS DATA =====
@@ -130,7 +135,10 @@ for country, sticker, qty in filtered_results:
 
         output_text += f"{country}:\n"
 
-    country_stickers.append(f"{sticker}")
+    if show_qty:
+        country_stickers.append(f"{sticker} ({qty})")
+    else:
+        country_stickers.append(f"{sticker}")
 
 # Print last country
 if country_stickers:
