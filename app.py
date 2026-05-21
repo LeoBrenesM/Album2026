@@ -132,25 +132,27 @@ if not filtered_results:
 
     st.warning(output_text)
     
-for country, sticker, qty in filtered_results:
+else:
 
-    if country != current_country:
+    for country, sticker, qty in filtered_results:
 
-        # Print previous country
-        if current_country is not None:
-            output_text += ", ".join(country_stickers) + "\n\n"
+        if country != current_country:
 
-        # Start new country
-        current_country = country
-        country_stickers = []
+            # Print previous country
+            if current_country is not None:
+                output_text += ", ".join(country_stickers) + "\n\n"
 
-        output_text += f"{country}:\n"
+            # Start new country
+            current_country = country
+            country_stickers = []
 
-    country_stickers.append(f"{sticker}")
+            output_text += f"{country}:\n"
 
-# Print last country
-if country_stickers:
-    output_text += ", ".join(country_stickers)
+        country_stickers.append(f"{sticker}")
+
+    # Print last country
+    if country_stickers:
+        output_text += ", ".join(country_stickers)
 
 # ===== SHOW TEXT =====
 
