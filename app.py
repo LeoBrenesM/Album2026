@@ -114,8 +114,24 @@ current_country = None
 country_stickers = []
 
 if not filtered_results:
-    output_text = "No hay " + mode + " " + threshold
 
+    if mode == "1":
+        output_text = (
+            f"No hay stickers con mas de {threshold} copias."
+        )
+
+    elif mode == "2":
+        output_text = (
+            f"No hay stickers con menos de {threshold} copias."
+        )
+
+    elif mode == "3":
+        output_text = (
+            f"No hay stickers con exactamente {threshold} copias."
+        )
+
+    st.warning(output_text)
+    
 for country, sticker, qty in filtered_results:
 
     if country != current_country:
