@@ -113,6 +113,9 @@ output_text = ""
 current_country = None
 country_stickers = []
 
+if not filtered_results:
+    output_text = "No hay " + mode + " " + threshold
+
 for country, sticker, qty in filtered_results:
 
     if country != current_country:
