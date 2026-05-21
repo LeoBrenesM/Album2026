@@ -138,21 +138,22 @@ if country_stickers:
 
 # ===== SHOW TEXT =====
 
-st.code(output_text)
+if filtered_results:
+    st.code(output_text)
 
-if not filtered_results:
+else:
 
-    if mode == "1":
+    if mode == "Mas de X":
         output_text = (
             f"No hay stickers con mas de {threshold} copias."
         )
 
-    elif mode == "2":
+    elif mode == "Menos de X":
         output_text = (
             f"No hay stickers con menos de {threshold} copias."
         )
 
-    elif mode == "3":
+    elif mode == "Igual a X":
         output_text = (
             f"No hay stickers con exactamente {threshold} copias."
         )
