@@ -23,7 +23,7 @@ client = gspread.authorize(creds)
 # ===== OPEN SHEET =====
 
 spreadsheet = client.open_by_key(
-    "TU_SHEET_ID"
+    "10H8tULd57u10wKGKxLOTyhh3dwIpBqwnFNhOgmIEW3s"
 )
 
 worksheet = spreadsheet.get_worksheet(0)
