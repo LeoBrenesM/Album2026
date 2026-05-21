@@ -113,6 +113,33 @@ output_text = ""
 current_country = None
 country_stickers = []
 
+
+    
+
+for country, sticker, qty in filtered_results:
+
+    if country != current_country:
+
+        # Print previous country
+        if current_country is not None:
+            output_text += ", ".join(country_stickers) + "\n\n"
+
+        # Start new country
+        current_country = country
+        country_stickers = []
+
+        output_text += f"{country}:\n"
+
+    country_stickers.append(f"{sticker}")
+
+# Print last country
+if country_stickers:
+    output_text += ", ".join(country_stickers)
+
+# ===== SHOW TEXT =====
+
+st.code(output_text)
+
 if not filtered_results:
 
     if mode == "1":
@@ -131,29 +158,3 @@ if not filtered_results:
         )
 
     st.warning(output_text)
-    
-else:
-
-    for country, sticker, qty in filtered_results:
-
-        if country != current_country:
-
-            # Print previous country
-            if current_country is not None:
-                output_text += ", ".join(country_stickers) + "\n\n"
-
-            # Start new country
-            current_country = country
-            country_stickers = []
-
-            output_text += f"{country}:\n"
-
-        country_stickers.append(f"{sticker}")
-
-    # Print last country
-    if country_stickers:
-        output_text += ", ".join(country_stickers)
-
-# ===== SHOW TEXT =====
-
-st.code(output_text)
