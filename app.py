@@ -118,12 +118,16 @@ def passes_filter(qty):
 
 def shields_filter(sticker,qty):
     if show_shields:
-        return qty
+        return True
+    elif "1" in sticker:
+        return True
     return False
 
 def teams_filter(sticker, qty):
     if show_teams:
-        return qty
+        return True
+    elif "13" in sticker:
+        return True
     return False
 
 filtered_results = [
@@ -170,17 +174,17 @@ if country_stickers:
 if filtered_results:
     if mode == "Mas de X":
         output_text = (
-            f"Hay {qty_shown} stickers con mas de {threshold} postales cada uno.\n{output_text}"
+            f"Hay {qty_shown} sticker(s) con mas de {threshold} postal(es) cada uno.\n\n{output_text}"
         )
 
     elif mode == "Menos de X":
         output_text = (
-            f"Hay {qty_shown} stickers con menos de {threshold} postales cada uno.\n{output_text}"
+            f"Hay {qty_shown} sticker(s) con menos de {threshold} postal(es) cada uno.\n\n{output_text}"
         )
 
     elif mode == "Igual a X":
         output_text = (
-            f"Hay {qty_shown} stickers con exactamente {threshold} postales cada uno.\n{output_text}"
+            f"Hay {qty_shown} sticker(s) con exactamente {threshold} postal(es) cada uno.\n\n{output_text}"
         )
 
     st.code(output_text)
