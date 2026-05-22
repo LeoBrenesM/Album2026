@@ -163,7 +163,7 @@ for country, sticker, qty in filtered_results:
 # Print last country
 if country_stickers:
     output_text += ", ".join(country_stickers)
-    qty_shown += 1
+    #qty_shown += 1
 
 # ===== SHOW TEXT =====
 
