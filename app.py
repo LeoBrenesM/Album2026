@@ -56,6 +56,11 @@ show_qty = st.sidebar.checkbox(
     value=False
 )
 
+show_normals = st.sidebar.checkbox(
+    "Mostrar jugadores",
+    value=True
+)
+
 show_shields = st.sidebar.checkbox(
     "Mostrar escudos",
     value=True
@@ -116,17 +121,31 @@ def passes_filter(qty):
 
     return False
 
+def players_filter(sticker):
+    sticker = str(sticker)
+    if show_normals:
+        return True
+    elif sticker.startswith("FW"):
+        True
+    elif sticker.endswith(" 1"):
+        True
+    return sticker.endswith(" 13")
+
 def shields_filter(sticker):
-    sticker = str(sticker);
+    sticker = str(sticker)
     if show_shields:
         return True
-    return not sticker.endswith("1")
+    if sticker.startswith("FW"):
+        True
+    return not sticker.endswith(" 1")
 
 def teams_filter(sticker):
-    sticker = str(sticker);
+    sticker = str(sticker)
     if show_teams:
         return True
-    return not sticker.endswith("13")
+    if sticker.startswith("FW"):
+        True
+    return not sticker.endswith(" 13")
 
 filtered_results = [
     (country, sticker, qty)
