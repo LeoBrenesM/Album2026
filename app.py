@@ -116,26 +116,24 @@ def passes_filter(qty):
 
     return False
 
-def shields_filter(sticker,qty):
+def shields_filter(sticker):
+    sticker = str(sticker);
     if show_shields:
         return True
-    elif "1" in sticker:
-        return True
-    return False
+    return not sticker.endswith("1")
 
-def teams_filter(sticker, qty):
+def teams_filter(sticker):
+    sticker = str(sticker);
     if show_teams:
         return True
-    elif "13" in sticker:
-        return True
-    return False
+    return not sticker.endswith("13")
 
 filtered_results = [
     (country, sticker, qty)
     for country, sticker, qty in results
     if passes_filter(qty)
-        if shields_filter(sticker, qty)
-        if teams_filter(sticker, qty)
+        if shields_filter(sticker)
+        if teams_filter(sticker)
 ]
 
 # ===== DISPLAY =====
