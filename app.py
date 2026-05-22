@@ -72,7 +72,6 @@ show_teams = st.sidebar.checkbox(
 )
 
 results = []
-qty_shown = 0
 
 # ===== PROCESS DATA =====
 
@@ -107,7 +106,6 @@ for col in range(df.shape[1]):
         results.append((country, sticker, qty))
 
 # ===== FILTER =====
-
 def passes_filter(qty):
 
     if mode == "Mas de X":
@@ -121,61 +119,76 @@ def passes_filter(qty):
 
     return False
 
-def players_filter(sticker):
-    sticker = str(sticker)
-    if show_normals:
-        return True
-    elif sticker.startswith("FW"):
-        True
-    elif sticker.endswith(" 1"):
-        True
-    return sticker.endswith(" 13")
+def is_fw(sticker):
+    return str(sticker).startswith("FW")
 
-def shields_filter(sticker):
-    sticker = str(sticker)
-    if show_shields:
-        return True
-    if sticker.startswith("FW"):
-        True
-    return not sticker.endswith(" 1")
+def is_shield(sticker):
+    return str(sticker).endswith(" 1")
 
-def teams_filter(sticker):
+def is_team(sticker):
+    return str(sticker).endswith(" 13")
+
+def is_player(sticker):
+
     sticker = str(sticker)
-    if show_teams:
-        return True
-    if sticker.startswith("FW"):
-        True
-    return not sticker.endswith(" 13")
+
+    return (
+        not is_fw(sticker)
+        and not is_shield(sticker)
+        and not is_team(sticker)
+    )
+
+def should_include_sticker(sticker, qty):
+
+    # ===== QUANTITY FILTER =====
+
+    if not passes_filter(qty):
+        return False
+
+    # ===== SHIELDS =====
+
+    if not show_shields and is_shield(sticker):
+        return False
+
+    # ===== TEAMS =====
+
+    if not show_teams and is_team(sticker):
+        return False
+
+    # ===== PLAYERS =====
+
+    if not show_normals and is_player(sticker):
+        return False
+
+    return True
 
 filtered_results = [
     (country, sticker, qty)
     for country, sticker, qty in results
-    if passes_filter(qty)
-        if shields_filter(sticker)
-        if teams_filter(sticker)
-        if players_filter(sticker)
+    if should_include_sticker(sticker, qty)
 ]
 
 # ===== DISPLAY =====
 
 output_text = ""
+lines = []
 
 current_country = None
 country_stickers = []
 
 for country, sticker, qty in filtered_results:
-    qty_shown += 1
+    
     if country != current_country:
 
         # Print previous country
         if current_country is not None:
-            output_text += ", ".join(country_stickers) + "\n\n"
+            lines.append(", ".join(country_stickers) + "\n\n")
 
         # Start new country
         current_country = country
         country_stickers = []
 
-        output_text += f"{country}:\n"
+        lines.append(f"{country}:\n")
 
     if show_qty:
         country_stickers.append(f"{sticker} ({qty})")
@@ -184,12 +197,12 @@ for country, sticker, qty in filtered_results:
 
 # Print last country
 if country_stickers:
-    output_text += ", ".join(country_stickers)
-    #qty_shown += 1
+    lines.append(", ".join(country_stickers))
 
 # ===== SHOW TEXT =====
 
 if filtered_results:
+    qty_shown = len(filtered_results)
     if mode == "Mas de X":
         output_text = (
             f"Hay {qty_shown} sticker(s) con mas de {threshold} postal(es) cada uno.\n\n{output_text}"
