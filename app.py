@@ -168,7 +168,6 @@ if country_stickers:
 # ===== SHOW TEXT =====
 
 if filtered_results:
-    output_text = ""
     if mode == "Mas de X":
         output_text = (
             f"Hay {qty_shown} stickers con mas de {threshold} postales cada uno.",output_text
