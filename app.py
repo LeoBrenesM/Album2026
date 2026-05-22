@@ -194,9 +194,9 @@ for country, sticker, qty in filtered_results:
         lines.append(f"{country}:\n")
 
     if show_qty:
-        country_stickers.append(f"{sticker} ({qty})")
+        country_stickers.append(f"`{sticker}` ({qty})")
     else:
-        country_stickers.append(f"{sticker}")
+        country_stickers.append(f"`{sticker}`")
 
 # Print last country
 if country_stickers:
@@ -221,7 +221,8 @@ if filtered_results:
             f"Hay {qty_shown} sticker(s) con exactamente {threshold} postal(es) cada uno.\n\n" + "".join(lines)
         )
 
-    st.code(output_text)
+    #st.code(output_text)
+    st.markdown(output_text)
 
 else:
 
