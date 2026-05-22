@@ -153,6 +153,7 @@ filtered_results = [
     if passes_filter(qty)
         if shields_filter(sticker)
         if teams_filter(sticker)
+        if players_filter(sticker)
 ]
 
 # ===== DISPLAY =====
