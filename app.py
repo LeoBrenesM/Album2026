@@ -205,17 +205,17 @@ if filtered_results:
     qty_shown = len(filtered_results)
     if mode == "Mas de X":
         output_text = (
-            f"Hay {qty_shown} sticker(s) con mas de {threshold} postal(es) cada uno.\n\n".join(lines)
+            f"Hay {qty_shown} sticker(s) con mas de {threshold} postal(es) cada uno.\n\n" + "".join(lines)
         )
 
     elif mode == "Menos de X":
         output_text = (
-            f"Hay {qty_shown} sticker(s) con menos de {threshold} postal(es) cada uno.\n\n".join(lines)
+            f"Hay {qty_shown} sticker(s) con menos de {threshold} postal(es) cada uno.\n\n" + "".join(lines)
         )
 
     elif mode == "Igual a X":
         output_text = (
-            f"Hay {qty_shown} sticker(s) con exactamente {threshold} postal(es) cada uno.\n\n".join(lines)
+            f"Hay {qty_shown} sticker(s) con exactamente {threshold} postal(es) cada uno.\n\n" + "".join(lines)
         )
 
     st.code(output_text)
