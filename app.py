@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import gspread
-from flags import flags
 from google.oauth2.service_account import Credentials
 
 # ===== PAGE =====
@@ -56,12 +55,10 @@ show_qty = st.sidebar.checkbox(
     "Mostrar cantidades",
     value=False
 )
-
 TYPE_PLAYERS = "Jugadores"
 TYPE_SHIELDS = "Escudos"
 TYPE_TEAMS = "Equipos"
 TYPE_FW = "FW"
-
 
 selected_types = st.sidebar.multiselect(
     "Tipos",
@@ -194,9 +191,7 @@ for country, sticker, qty in filtered_results:
         current_country = country
         country_stickers = []
 
-        #lines.append(f"{country}:\n")
-        flag = flags.get(country, "")
-        lines.append(f"{flag} {country}:\n")
+        lines.append(f"{country}:\n")
 
     if show_qty:
         country_stickers.append(f"{sticker} ({qty})")
