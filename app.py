@@ -130,7 +130,7 @@ filtered_results = [
     (country, sticker, qty)
     for country, sticker, qty in results
     if passes_filter(qty)
-        if show_shields(sticker, qty)
+        if shields_filter(sticker, qty)
         if teams_filter(sticker, qty)
 ]
 
