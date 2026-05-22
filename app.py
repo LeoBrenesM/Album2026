@@ -55,20 +55,24 @@ show_qty = st.sidebar.checkbox(
     "Mostrar cantidades",
     value=False
 )
+TYPE_PLAYERS = "Jugadores"
+TYPE_SHIELDS = "Escudos"
+TYPE_TEAMS = "Equipos"
+TYPE_FW = "FW"
 
-show_normals = st.sidebar.checkbox(
-    "Mostrar jugadores",
-    value=True
-)
-
-show_shields = st.sidebar.checkbox(
-    "Mostrar escudos",
-    value=True
-)
-
-show_teams = st.sidebar.checkbox(
-    "Mostrar equipos",
-    value=True
+selected_types = st.sidebar.multiselect(
+    "Tipos",
+    [
+        TYPE_PLAYERS,
+        TYPE_SHIELDS,
+        TYPE_TEAMS,
+        TYPE_FW
+    ],
+    default=[
+        TYPE_PLAYERS,
+        TYPE_SHIELDS,
+        TYPE_TEAMS
+    ]
 )
 
 results = []
@@ -140,27 +144,26 @@ def is_player(sticker):
 
 def should_include_sticker(sticker, qty):
 
-    # ===== QUANTITY FILTER =====
+    # ===== QUANTITY =====
 
     if not passes_filter(qty):
         return False
 
-    # ===== SHIELDS =====
+    # ===== TYPE FILTER =====
 
-    if not show_shields and is_shield(sticker):
-        return False
+    if is_shield(sticker):
+        return "Escudos" in selected_types
 
-    # ===== TEAMS =====
+    if is_team(sticker):
+        return "Equipos" in selected_types
 
-    if not show_teams and is_team(sticker):
-        return False
+    if is_fw(sticker):
+        return "FW" in selected_types
 
-    # ===== PLAYERS =====
+    if is_player(sticker):
+        return "Jugadores" in selected_types
 
-    if not show_normals and is_player(sticker):
-        return False
-
-    return True
+    return False
 
 filtered_results = [
     (country, sticker, qty)
