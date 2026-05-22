@@ -170,17 +170,17 @@ if country_stickers:
 if filtered_results:
     if mode == "Mas de X":
         output_text = (
-            f"Hay {qty_shown} stickers con mas de {threshold} postales cada uno.",output_text
+            f"Hay {qty_shown} stickers con mas de {threshold} postales cada uno.\n{output_text}"
         )
 
     elif mode == "Menos de X":
         output_text = (
-            f"Hay {qty_shown} stickers con menos de {threshold} postales cada uno.",output_text
+            f"Hay {qty_shown} stickers con menos de {threshold} postales cada uno.\n{output_text}"
         )
 
     elif mode == "Igual a X":
         output_text = (
-            f"Hay {qty_shown} stickers con exactamente {threshold} postales cada uno.",output_text
+            f"Hay {qty_shown} stickers con exactamente {threshold} postales cada uno.\n{output_text}"
         )
 
     st.code(output_text)
