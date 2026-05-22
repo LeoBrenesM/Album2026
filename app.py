@@ -56,7 +56,18 @@ show_qty = st.sidebar.checkbox(
     value=False
 )
 
+show_shields = st.sidebar.checkbox(
+    "Mostrar escudos",
+    value=True
+)
+
+show_teams = st.sidebar.checkbox(
+    "Mostrar equipos",
+    value=True
+)
+
 results = []
+qty_shown = 0
 
 # ===== PROCESS DATA =====
 
@@ -118,11 +129,8 @@ output_text = ""
 current_country = None
 country_stickers = []
 
-
-    
-
 for country, sticker, qty in filtered_results:
-
+    qty_shown += 1
     if country != current_country:
 
         # Print previous country
@@ -143,10 +151,27 @@ for country, sticker, qty in filtered_results:
 # Print last country
 if country_stickers:
     output_text += ", ".join(country_stickers)
+    qty_shown += 1
 
 # ===== SHOW TEXT =====
 
 if filtered_results:
+    output_text = ""
+    if mode == "Mas de X":
+        output_text = (
+            f"Hay {qty_shown} stickers con mas de {threshold} postales cada uno."
+        )
+
+    elif mode == "Menos de X":
+        output_text = (
+            f"Hay {qty_shown} stickers con menos de {threshold} postales cada uno."
+        )
+
+    elif mode == "Igual a X":
+        output_text = (
+            f"Hay {qty_shown} stickers con exactamente {threshold} postales cada uno."
+        )
+
     st.code(output_text)
 
 else:
