@@ -81,6 +81,7 @@ results = []
 
 for col in range(df.shape[1]):
 
+    group = df.iloc[0, col]
     country = df.iloc[1, col]
 
     if pd.isna(country) or country == "":
@@ -107,7 +108,7 @@ for col in range(df.shape[1]):
         except:
             continue
 
-        results.append((country, sticker, qty))
+        results.append((group, country, sticker, qty))
 
 # ===== FILTER =====
 def passes_filter(qty):
@@ -166,8 +167,8 @@ def should_include_sticker(sticker, qty):
     return False
 
 filtered_results = [
-    (country, sticker, qty)
-    for country, sticker, qty in results
+    (group, country, sticker, qty)
+    for group, country, sticker, qty in results
     if should_include_sticker(sticker, qty)
 ]
 
@@ -177,10 +178,18 @@ output_text = ""
 lines = []
 
 current_country = None
+current_group = None
 country_stickers = []
 
-for country, sticker, qty in filtered_results:
+for group, country, sticker, qty in filtered_results:
     
+    if group != current_group:
+
+        current_group = group
+
+        lines.append(f"\n\n## - {group} - ##\n")
+        lines.append("")
+
     if country != current_country:
 
         # Print previous country
