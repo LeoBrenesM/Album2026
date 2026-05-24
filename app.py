@@ -195,12 +195,16 @@ for group, country, sticker, qty in filtered_results:
         if country_stickers:
             lines.append(", ".join(country_stickers))
             lines.append("")
-
+            
+        if current_group == None:
+            lines.append(f"## - {group} - ##\n")
+        else:
+            lines.append(f"\n\n## - {group} - ##\n")
+            
         current_group = group
         current_country = None
         country_stickers = []
-
-        lines.append(f"\n\n## - {group} - ##\n")
+        
         lines.append("")
 
     if country != current_country:
