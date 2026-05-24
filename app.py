@@ -200,7 +200,7 @@ for group, country, sticker, qty in filtered_results:
         current_country = None
         country_stickers = []
 
-        lines.append(f"## - {group} - ##")
+        lines.append(f"\n\n## - {group} - ##\n")
         lines.append("")
 
     if country != current_country:
