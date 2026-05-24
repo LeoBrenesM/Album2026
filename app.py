@@ -195,7 +195,7 @@ for group, country, sticker, qty in filtered_results:
         if country_stickers:
             lines.append(", ".join(country_stickers))
             lines.append("")
-            
+
         if current_group == None:
             lines.append(f"## - {group} - ##\n")
         else:
@@ -247,7 +247,7 @@ if filtered_results:
             f"Hay {qty_shown} sticker(s) con exactamente {threshold} postal(es) cada uno.\n\n" + "".join(lines)
         )
 
-    st.code(output_text)
+    st.code(output_text, wrap_lines=True)
     #st.markdown(output_text)
 
 else:
