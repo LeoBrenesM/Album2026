@@ -76,13 +76,19 @@ selected_types = st.sidebar.multiselect(
 )
 
 results = []
+current_group_name = ""
 
 # ===== PROCESS DATA =====
 
 for col in range(df.shape[1]):
 
-    group = df.iloc[0, col]
     country = df.iloc[1, col]
+    group_cell = df.iloc[0, col]
+
+    if pd.notna(group_cell) and group_cell != "":
+        current_group_name = group_cell
+
+    group = current_group_name
 
     if pd.isna(country) or country == "":
         continue
@@ -185,9 +191,16 @@ for group, country, sticker, qty in filtered_results:
     
     if group != current_group:
 
-        current_group = group
+        # flush previous country first
+        if country_stickers:
+            lines.append(", ".join(country_stickers))
+            lines.append("")
 
-        lines.append(f"\n\n## - {group} - ##\n")
+        current_group = group
+        current_country = None
+        country_stickers = []
+
+        lines.append(f"## - {group} - ##")
         lines.append("")
 
     if country != current_country:
