@@ -242,7 +242,11 @@ def show_inventory():
 
     if filtered_results:
         qty_shown = len(filtered_results)
-        if mode == "Mas de X":
+        if mode == "Sin Filtro":
+            output_text = (
+                f"Hay {qty_shown} sticker(s) en nuestro inventario.\n\n" + "".join(lines)
+            )
+        elif mode == "Mas de X":
             output_text = (
                 f"Hay {qty_shown} sticker(s) con mas de {threshold} postal(es) cada uno.\n\n" + "".join(lines)
             )

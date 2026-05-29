@@ -34,7 +34,7 @@ def show_calculator():
     #     normales_price = 150
 
     total = (
-        normales * 1 +
+        normales * normales_price +
         escudos * 500 +
         equipos * 200 +
         fwc00 * 1500 +
@@ -45,6 +45,9 @@ def show_calculator():
         tier2 * 3000 +
         tier3 * 4000
     )
+
+    st.warning(f"Precio postales jugadores normales: {normales_price}")
+    st.warning(f"Cantidad total de postales: {total_figuritas}")
 
     st.metric(
         "Valor total estimado",
