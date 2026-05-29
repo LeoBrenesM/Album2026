@@ -51,7 +51,8 @@ def show_inventory():
     threshold = st.sidebar.number_input(
         "Cantidad X",
         min_value=0,
-        value=20
+        value=20,
+        disabled=(mode == "Sin Filtro")
     )
 
     show_qty = st.sidebar.checkbox(
@@ -124,7 +125,7 @@ def show_inventory():
     def passes_filter(qty):
 
         if mode == "Sin Filtro":
-            return False
+            return True
 
         if mode == "Mas de X":
             return qty > threshold
@@ -168,16 +169,16 @@ def show_inventory():
         # ===== TYPE FILTER =====
 
         if is_shield(sticker):
-            return "Escudos" in selected_types
+            return TYPE_SHIELDS in selected_types
 
         if is_team(sticker):
-            return "Equipos" in selected_types
+            return TYPE_TEAMS in selected_types
 
         if is_fw(sticker):
-            return "FW" in selected_types
+            return TYPE_FW in selected_types
 
         if is_player(sticker):
-            return "Jugadores" in selected_types
+            return TYPE_PLAYERS in selected_types
 
         return False
 
