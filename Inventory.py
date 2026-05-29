@@ -124,7 +124,7 @@ def show_inventory():
     def passes_filter(qty):
 
         if mode == "Sin Filtro":
-            return True
+            return False
 
         if mode == "Mas de X":
             return qty > threshold
