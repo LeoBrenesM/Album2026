@@ -26,7 +26,7 @@ def show_calculator():
 
     if total_figuritas >= 50:
         normales_price = 140
-    elif total_figuritas >= 100:
+    if total_figuritas >= 100:
         normales_price = 125
 
     ### just an idea
