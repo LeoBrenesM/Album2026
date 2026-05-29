@@ -6,8 +6,6 @@ from google.oauth2.service_account import Credentials
 
 def show_inventory():
     # ===== PAGE =====
-
-    st.title("Figuritas 2026")
     st.header("Inventario")
 
     # ===== GOOGLE AUTH =====
@@ -42,11 +40,12 @@ def show_inventory():
     mode = st.sidebar.selectbox(
         "Tipo de filtro",
         [
+            "Sin Filtro",
             "Mas de X",
             "Menos de X",
             "Igual a X"
         ],
-        index=1
+        index=0
     )
 
     threshold = st.sidebar.number_input(
@@ -123,6 +122,9 @@ def show_inventory():
 
     # ===== FILTER =====
     def passes_filter(qty):
+
+        if mode == "Sin Filtro":
+            return True
 
         if mode == "Mas de X":
             return qty > threshold
