@@ -42,18 +42,19 @@ mode = st.sidebar.selectbox(
         "Mas de X",
         "Menos de X",
         "Igual a X"
-    ]
+    ],
+    index=1
 )
 
 threshold = st.sidebar.number_input(
     "Cantidad X",
     min_value=0,
-    value=2
+    value=20
 )
 
 show_qty = st.sidebar.checkbox(
     "Mostrar cantidades",
-    value=False
+    value=True
 )
 TYPE_PLAYERS = "Jugadores"
 TYPE_SHIELDS = "Escudos"
@@ -71,7 +72,8 @@ selected_types = st.sidebar.multiselect(
     default=[
         TYPE_PLAYERS,
         TYPE_SHIELDS,
-        TYPE_TEAMS
+        TYPE_TEAMS,
+        TYPE_FW
     ]
 )
 
@@ -137,6 +139,8 @@ def is_shield(sticker):
     return str(sticker).endswith(" 1")
 
 def is_team(sticker):
+    if str(sticker).startswith("FW"):
+        return False
     return str(sticker).endswith(" 13")
 
 def is_player(sticker):
