@@ -46,10 +46,46 @@ def show_calculator():
         tier3 * 4000
     )
 
-    st.warning(f"Precio postales jugadores normales: {normales_price}")
-    st.warning(f"Cantidad total de postales: {total_figuritas}")
+    if total > 0:
 
-    st.metric(
-        "Valor total estimado",
-        total
-    )
+        detalle = pd.DataFrame([
+            ["Normales", normales, normales_price, normales * normales_price],
+            ["Equipos", equipos, 200, equipos * 200],
+            ["Escudos", escudos, 500, escudos * 500],
+            ["FWC00", fwc00, 1500, fwc00 * 1500],
+            ["FWC03 / FWC05", fwcTier1, 1000, fwcTier1 * 1000],
+            ["FWC01,02,04,06,07,08", fwcTier2, 500, fwcTier2 * 500],
+            ["FWC Campeones", fwcTier3, 1000, fwcTier3 * 1000],
+            ["Tier 1", tier1, 1500, tier1 * 1500],
+            ["Mbappé / Lamine", tier2, 3000, tier2 * 3000],
+            ["Messi / CR7", tier3, 4000, tier3 * 4000],
+        ],
+        columns=[
+            "Tipo",
+            "Cantidad",
+            "Precio Unitario",
+            "Subtotal"
+        ])
+
+        st.dataframe(
+            detalle,
+            use_container_width=True,
+            hide_index=True
+        )
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.info(
+                f"Total de postales: {total_figuritas}"
+            )
+
+        with col2:
+            st.info(
+                f"Precio normales: ₡{normales_price:,}"
+            )
+
+        st.metric(
+            "Valor total estimado",
+            f"₡{total:,}"
+        )
