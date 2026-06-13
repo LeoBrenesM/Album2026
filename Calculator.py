@@ -12,8 +12,8 @@ def show_calculator():
     fwc00 = st.number_input("FWC00", 0, 999, 0)
     fwcTier1 = st.number_input("FWC 03, 04, 05, 08 - 17, 18", 0, 999, 0)
     fwcTier2 = st.number_input("FWC 01,02,04,06,07,08, [09-16],19", 0, 999, 0)
-    tier1 = st.number_input("Haaland, Julián , Raphinha, Vinicius, Bellingham", 0, 999, 0)
-    tier2 = st.number_input("Mbappe / Lamine / Modric", 0, 999, 0)
+    tier1 = st.number_input("Lamine, Julián , Raphinha, Vinicius", 0, 999, 0)
+    tier2 = st.number_input("Mbappé / Modric / Haaland / Bellingham", 0, 999, 0)
     tier3 = st.number_input("Messi / CR7", 0, 999, 0)
 
     total_figuritas = (normales + equipos + escudos + 
@@ -45,8 +45,8 @@ def show_calculator():
             ["FWC 00", fwc00, 500, fwc00 * 500],
             ["FWC 03, 04, 05, 08 - 17, 18", fwcTier1, 1000, fwcTier1 * 1000],
             ["FWC 01,02,04,06,07,08", fwcTier2, 500, fwcTier2 * 500],
-            ["Haaland, Julián , Raphinha, Vinicius, Bellingham", tier1, 1500, tier1 * 1500],
-            ["Mbappé / Lamine / Modric", tier2, 3000, tier2 * 3000],
+            ["Lamine, Julián , Raphinha, Vinicius", tier1, 1500, tier1 * 1500],
+            ["Mbappé / Modric / Haaland / Bellingham", tier2, 3000, tier2 * 3000],
             ["Messi / CR7", tier3, 4000, tier3 * 4000],
         ],
         columns=[
