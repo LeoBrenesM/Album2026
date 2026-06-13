@@ -28,7 +28,7 @@ def show_calculator():
         normales * 150 +
         escudos * 500 +
         equipos * 200 +
-        fwc00 * 1500 +
+        fwc00 * 500 +
         fwcTier1 * 1000 +
         fwcTier2 * 500 +
         tier1 * 1500 +
@@ -42,7 +42,7 @@ def show_calculator():
             ["Normales", normales, 150, normales * 150],
             ["Equipos", equipos, 250, equipos * 250],
             ["Escudos", escudos, 500, escudos * 500],
-            ["FWC 00", fwc00, 1500, fwc00 * 1500],
+            ["FWC 00", fwc00, 500, fwc00 * 500],
             ["FWC 03, 04, 05, 08 - 17, 18", fwcTier1, 1000, fwcTier1 * 1000],
             ["FWC 01,02,04,06,07,08", fwcTier2, 500, fwcTier2 * 500],
             ["Haaland, Julián , Raphinha, Vinicius, Bellingham", tier1, 1500, tier1 * 1500],
