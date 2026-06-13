@@ -27,7 +27,7 @@ def show_calculator():
     total = (
         normales * 150 +
         escudos * 500 +
-        equipos * 200 +
+        equipos * 300 +
         fwc00 * 500 +
         fwcTier1 * 1000 +
         fwcTier2 * 500 +
@@ -40,7 +40,7 @@ def show_calculator():
 
         detalle = pd.DataFrame([
             ["Normales", normales, 150, normales * 150],
-            ["Equipos", equipos, 250, equipos * 250],
+            ["Equipos", equipos, 300, equipos * 300],
             ["Escudos", escudos, 500, escudos * 500],
             ["FWC 00", fwc00, 500, fwc00 * 500],
             ["FWC 03, 04, 05, 08 - 17, 18", fwcTier1, 1000, fwcTier1 * 1000],
