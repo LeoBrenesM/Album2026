@@ -276,7 +276,14 @@ def show_inventory():
     with col2:
         st.metric(
             "Total de postales",
+            "(Sin tomar en cuenta el caballo de troya)",
             f"{total_postales:,}"
+        )
+
+    with col2:
+        st.metric(
+            "Total en colones a 150",
+            f"{total_postales*150:,}"
         )
 
     if filtered_results:
