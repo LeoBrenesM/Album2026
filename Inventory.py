@@ -275,8 +275,7 @@ def show_inventory():
 
     with col2:
         st.metric(
-            "Total de postales",
-            "(Sin tomar en cuenta el caballo de troya)",
+            "Total de postales\n(Sin tomar en cuenta el caballo de troya)",
             f"{total_postales:,}"
         )
 
