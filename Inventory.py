@@ -51,7 +51,7 @@ def show_inventory():
     threshold = st.sidebar.number_input(
         "Cantidad X",
         min_value=0,
-        value=20,
+        value=2,
         disabled=(mode == "Sin Filtro")
     )
 
