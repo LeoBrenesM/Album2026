@@ -187,6 +187,25 @@ def show_inventory():
         for group, country, sticker, qty in results
         if should_include_sticker(sticker, qty)
     ]
+    
+    # ===== INVENTORY STATS =====
+
+    stickers_con_stock = sum(
+        1
+        for _, _, _, qty in results
+        if qty > 0
+    )
+
+    stickers_sin_stock = sum(
+        1
+        for _, _, _, qty in results
+        if qty == 0
+    )
+
+    total_postales = sum(
+        qty
+        for _, _, _, qty in results
+    )
 
     # ===== DISPLAY =====
 
@@ -239,6 +258,26 @@ def show_inventory():
         lines.append(", ".join(country_stickers))
 
     # ===== SHOW TEXT =====
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.metric(
+            "Stickers con stock",
+            f"{stickers_con_stock:,}"
+        )
+
+    with col1:
+        st.metric(
+            "Stickers agotados",
+            f"{stickers_sin_stock:,}"
+        )
+
+    with col2:
+        st.metric(
+            "Total de postales",
+            f"{total_postales:,}"
+        )
 
     if filtered_results:
         qty_shown = len(filtered_results)
