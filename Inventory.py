@@ -260,7 +260,7 @@ def show_inventory():
     # ===== SHOW TEXT =====
 
     col1, col2 = st.columns(2)
-
+    balance = stickers_con_stock / (stickers_con_stock + stickers_sin_stock) * 100
     with col1:
         st.metric(
             "Stickers con stock",
@@ -271,6 +271,13 @@ def show_inventory():
         st.metric(
             "Stickers agotados",
             f"{stickers_sin_stock:,}"
+        )
+
+    with col1:
+        st.metric(
+            "Cobertura %",
+            f"{balance:,}",
+            80
         )
 
     with col2:
