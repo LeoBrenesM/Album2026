@@ -45,14 +45,14 @@ def show_calculator():
             ["FWC 00", fwc00, fwc00 * 500, 500],
             ["FWC 01,02", fwcTier2, fwcTier2 * 500, 500],
             ["FWC 03-08, 17, 18", fwcTier1, fwcTier1 * 2000, 2000],
-            ["Lamine, Julián , Raphinha, Vini", tier1, tier1 * 1500,1500],
+            ["Lamine, Julián , Raphinha, Vini", tier1, tier1 * 1500, 1500],
             ["Mbappé, Modric, Haaland, Belling", tier2, tier2 * 3000, 3000],
             ["Messi / CR7", tier3, tier3 * 4000, 4000],
         ],
         columns=[
             "Tipo",
             "Cantidad",
-            "Subtotal"
+            "Subtotal",
             "Precio Unitario",
         ])
 
