@@ -39,21 +39,21 @@ def show_calculator():
     if total > 0:
 
         detalle = pd.DataFrame([
-            ["Normales", normales, normales * 150, 150],
-            ["Equipos", equipos, equipos * 300, 300],
-            ["Escudos", escudos, escudos * 500, 500],
-            ["FWC 00", fwc00, fwc00 * 500, 500],
-            ["FWC 01,02", fwcTier2, fwcTier2 * 500, 500],
-            ["FWC 03-08, 17, 18", fwcTier1, fwcTier1 * 2000, 2000],
-            ["Lamine, Julián , Raphinha, Vini", tier1, tier1 * 1500, 1500],
-            ["Mbappé, Modric, Haaland, Belling", tier2, tier2 * 3000, 3000],
-            ["Messi / CR7", tier3, tier3 * 4000, 4000],
+            ["Normales", normales, 150, normales * 150],
+            ["Equipos", equipos, 300, equipos * 300],
+            ["Escudos", escudos, 500, escudos * 500],
+            ["FWC 00", fwc00, 500, fwc00 * 500],
+            ["FWC 01,02", fwcTier2, 500, fwcTier2 * 500],
+            ["FWC 03-08,17,18", fwcTier1, 2000, fwcTier1 * 2000],
+            ["Lamine, Julián, Raphinha, Vini", tier1, 1500, tier1 * 1500],
+            ["Mbappé, Modric, Haaland, Belling", tier2, 3000, tier2 * 3000],
+            ["Messi / CR7", tier3, 4000, tier3 * 4000],
         ],
         columns=[
             "Tipo",
             "Cantidad",
-            "Subtotal",
             "Precio Unitario",
+            "Subtotal",
         ])
 
         detalle = detalle[detalle["Cantidad"] > 0]
