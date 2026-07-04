@@ -58,11 +58,11 @@ def show_calculator():
 
         detalle = detalle[detalle["Cantidad"] > 0]
 
-        st.dataframe(
-            detalle,
-            use_container_width=True,
-            hide_index=True
-        )
+        # st.dataframe(
+        #     detalle,
+        #     use_container_width=True,
+        #     hide_index=True
+        # )
 
         st.table(detalle)
 
